@@ -1,3 +1,10 @@
 body {
     padding-top: 5rem;
 }
+
+.flashes{
+    width: 50px;
+    border: 15px solid green;
+    padding: 25px;
+    margin: auto;
+}

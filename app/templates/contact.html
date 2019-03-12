@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1>Contact Form</h1> <hr>
+<p>Fill in this form to contact the site owners</p>
+
+<form method="POST" action="/contact">
+    {{ form.csrf_token }}
+
+    {% if invalid and not form.name.data %}
+        <label><strong>Name <span style="color:red;">(Required)</span></strong></label><br>
+    {% else %}
+        <label><strong>Name</strong></label><br>
+    {% endif %}
+    
+    <p>Please enter your fullname</p>
+    {{ form.name(size=20) }} <br><br>
+
+    {% if invalid and (not form.email.data or form.email.) %}
+        <label><strong>E-mail <span style="color:red;">(Required)</span></strong></label><br>
+    {% else %}
+        <label><strong>E-mail</strong></label><br>
+    {% endif %}
+    <p>Please enter your e-mail address</p>
+    {{ form.email(size=50) }} <br><br>
+
+    {% if invalid and not form.subject.data %}
+        <label><strong>Subject <span style="color:red;">(Required)</span></strong></label><br>
+    {% else %}
+        <label><strong>Subject</strong></label><br>
+    {% endif %}
+    <p>Please enter the subject of your message.</p>
+    {{ form.subject(size=50) }} <br><br>
+
+    {% if invalid and not form.message.data %}
+        <label><strong>Message <span style="color:red;">(Required)</span></strong></label><br>
+    {% else %}
+        <label><strong>Message</strong></label><br>
+    {% endif %}
+    <p>Please enter the message you would like to send.</p>
+    {{ form.message(size=500) }} <br><br>
+    <input type="submit" value="Send" style="background: rgb(56, 56, 255); border-radius: 5px;border:0px;width:8em;">
+</form>
+{% endblock %}
